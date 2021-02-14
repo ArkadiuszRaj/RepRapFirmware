@@ -7,7 +7,7 @@
 __attribute__((__section__(".reset_data"), used)) uint32_t ResetData[FLASH_DATA_LENGTH/sizeof(uint32_t)];
 /*
  
-On STM32F4 we store reset data in flash. We have allocated a 16Kb sector for this purpose and the above
+On __STM32__ we store reset data in flash. We have allocated a 16Kb sector for this purpose and the above
 array maps to it.
 
 */

@@ -10,13 +10,13 @@
 #define UNUSED(x) (void)(x)
 #endif
 
-#define FIRMWARE_NAME "RepRapFirmware for STM32F4 based Boards"
+#define FIRMWARE_NAME "RepRapFirmware for STM32 based Boards"
 
 // Default board type
-#define DEFAULT_BOARD_TYPE BoardType::Stm32F4
-#define ELECTRONICS "STM32F4"
-#define STM_ELECTRONICS_STRING "STM32F4"
-#define STM_BOARD_STRING "STM32F4"
+#define DEFAULT_BOARD_TYPE BoardType::Stm32
+#define ELECTRONICS "STM32"
+#define STM_ELECTRONICS_STRING "STM32"
+#define STM_BOARD_STRING "STM32"
 
 #define FIRMWARE_FILE       "firmware.bin"
 #define WIFI_FIRMWARE_FILE  "DuetWiFiServer.bin" // Firmware to be loaded onto the ESP board
@@ -68,7 +68,7 @@
     #define HAS_MASS_STORAGE             1
     #define SUPPORT_TELNET               0
 
-    #define BOARD_NAME          "STM32F4 Ethernet"
+    #define BOARD_NAME          "STM32 Ethernet"
     #define BOARD_SHORT_NAME    "STMEth"
 
 #elif defined(ESP8266WIFI)
@@ -78,7 +78,7 @@
     #define HAS_MASS_STORAGE             1
     #define SUPPORT_TELNET               0
 
-    #define BOARD_NAME          "STM32F4 WiFi"
+    #define BOARD_NAME          "STM32 WiFi"
     #define BOARD_SHORT_NAME    "STMWiFi"
 
 #elif defined(LPC_SBC)
@@ -89,7 +89,7 @@
     #define HAS_LINUX_INTERFACE          1
     #define SUPPORT_TELNET               1
 
-    #define BOARD_NAME          "STM32F4 SBC"
+    #define BOARD_NAME          "STM32 SBC"
     #define BOARD_SHORT_NAME    "STMSBC"
 
 #else
@@ -99,7 +99,7 @@
     #define HAS_MASS_STORAGE             1
     #define SUPPORT_TELNET               0
 
-    #define BOARD_NAME          "STM32F4"
+    #define BOARD_NAME          "STM32"
     #define BOARD_SHORT_NAME    "STM32"
 
 #endif

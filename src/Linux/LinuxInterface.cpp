@@ -23,7 +23,7 @@
 #include <Hardware/SoftwareReset.h>
 #include <Hardware/ExceptionHandlers.h>
 #include <TaskPriorities.h>
-#if __LPC17xx__ || STM32F4
+#if __LPC17xx__ || __STM32__
 #include "BoardConfig.h"
 #endif
 
@@ -433,7 +433,7 @@ void LinuxInterface::Init() noexcept
 					break;
 				}
 
-#if __LPC17xx__ || STM32F4
+#if __LPC17xx__ || __STM32__
 				// On the LPC we repurpose the IAP code to download the firmware update data.
 				// on the Duet this is a two stage process (IAP followed by firmware), but we
 				// do not need the IAP and can instead use the error checked IAP download for
@@ -692,7 +692,7 @@ void LinuxInterface::Init() noexcept
 				{
 					const GCodeChannel channel(i);
 					GCodeBuffer * const gb = reprap.GetGCodes().GetGCodeBuffer(channel);
-#if __LPC17xx__ || STM32F4
+#if __LPC17xx__ || __STM32__
 					if (gb == nullptr)
 					{
 						//reprap.GetPlatform().MessageF(DebugMessage, "Unable to get requested channel buffer %d\n", i);
