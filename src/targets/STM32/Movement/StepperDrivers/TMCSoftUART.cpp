@@ -28,6 +28,10 @@
 
 #define SU_OVERSAMPLE 4
 
+#if !defined(STM32_SOFTUART_TIMER)
+#define STM32_SOFTUART_TIMER TIM1
+#endif
+
 static constexpr uint32_t SU_BAUD_RATE = DriversBaudRate;
 static constexpr uint32_t SU_MAX_BYTES = 8;
 static constexpr uint32_t SU_GAP_BYTES = 1;
@@ -44,7 +48,7 @@ enum class SUStates
 	error
 };
 static volatile SUStates SUState = SUStates::idle;
-static HardwareTimer SUTimer(TIM1);
+static HardwareTimer SUTimer(STM32_SOFTUART_TIMER);
 static Pin SUPin;
 static volatile uint32_t *SUPinSetClrPtr;
 static volatile uint32_t *SUPinReadPtr;
@@ -253,7 +257,7 @@ void TMCSoftUARTInit() noexcept
     SUPeriod = period;
 	SUTimer.setOverflow(period*SU_OVERSAMPLE, TICK_FORMAT);
     SUTimer.setCount(0, TICK_FORMAT);
-    __HAL_TIM_ENABLE_DMA(&(HardwareTimer_Handle[get_timer_index(TIM1)]->handle), TIM_DMA_UPDATE);
+    __HAL_TIM_ENABLE_DMA(&(HardwareTimer_Handle[get_timer_index(STM32_SOFTUART_TIMER)]->handle), TIM_DMA_UPDATE);
     __HAL_RCC_DMA2_CLK_ENABLE();    
     SUDma.Instance                 = DMA2_Stream5;
     SUDma.Init.Channel             = DMA_CHANNEL_6;

@@ -279,8 +279,11 @@ extern Pin NeopixelOutPin;
 #endif
 
 //Timer 5 is used for Step Generation
-#define STEP_TC             (TIM5)
-#define STEP_TC_IRQN        TIM5_IRQn
+#if !defined(STM32_STEP_TIMER)
+#define STM32_STEP_TIMER    TIM5
+#endif
+#define STEP_TC             (STM32_STEP_TIMER)
+#define STEP_TC_IRQN        STM32_STEP_TIMER ##_IRQn
 #define STEP_TC_HANDLER     STEP_TC_IRQHandler
 
 extern volatile uint32_t BrownoutEvents;
